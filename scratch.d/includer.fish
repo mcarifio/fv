@@ -1,6 +1,6 @@
 source included.fish
 set -l src source
-$src included.fish
+$src --trace included.fish
 $src included.login.fish
 $src included.interactive.fish
 $src included.skip.fish
