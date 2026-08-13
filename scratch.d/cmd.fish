@@ -1,3 +1,4 @@
 #!/usr/bin/env fish
 
-source includer.fish
+set -l here (path resolve (status dirname))
+source $here/includer.fish

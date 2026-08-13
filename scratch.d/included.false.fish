@@ -1,1 +1,1 @@
-status filename
+path resolve (status filename)
