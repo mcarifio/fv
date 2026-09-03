@@ -11,17 +11,16 @@ function send
     set -l subcmd (value $argv[2] receivers)
     # freceiver is the (candidate) function name for a function receiver.
     # Only dispatch to it if it's defined.
-    set -l freceiver $cmd+(string join + $argv[2..$_flag_select])
 
-    set -q _flag_show; and set -s _flag_select argv_opts0 cmd subcmd freceiver argv >&2
+    set -q _flag_show; and set -s _flag_select argv_opts0 cmd subcmd argv >&2
     if [ $subcmd = receivers ]
-        send+receivers $cmd # => 1 if no receivers
-    else if functions -q $freceiver
-        $freceiver $argv_opts0 $argv[(math 1 + $_flag_select)..]
+       _cmd=(rcvr send receivers) $_cmd $argv_opts0 $cmd
+    else if functions -q (rcvr $cmd $subcmd)
+        $_cmd=(rcvr $cmd $subcmd) $_cmd $argv_opts0 $argv[(math 1 + $_flag_select)..]
     else if builtin -q $cmd
         builtin $cmd $argv_opts0 $subcmd $argv[3..]
     else if command -q $cmd
-        command $cmd $argv_opts0 $subcmd $argv[3..]
+        _cmd=(command -s $cmd) command $_cmd $argv_opts0 $subcmd $argv[3..]
     else
         echo "$(status function): cannot $(status function) $cmd $subcmd $argv[3..]" >&2
         return 1

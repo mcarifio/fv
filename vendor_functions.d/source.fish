@@ -6,7 +6,7 @@ function source -w source -d 'source $pathname[.$guard].fish'
 end
 
 function _source -d '_source $pathname.$guard.fish'
-    set -l flags trace; set -l goes; set -l stays; argparse -sSu $flags -- $argv
+    set -l flags trace; set -l goes; set -l stays; argparse -su $flags -- $argv
     for a in $argv_opts; contains (string sub -s 3 -- $a) -- $flags; and set -a stays $a; or set -a goes $a; end
     set -q _flag_trace; and set -lx SOURCE_TRACE 1
 
