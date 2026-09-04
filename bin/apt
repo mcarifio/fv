@@ -1,0 +1,9 @@
+#!/usr/bin/env -S sudo fish
+
+set -l args $argv
+set -l _cmd (command -sa (path basename (status filename)))
+$_cmd[2] $argv
+
+
+
+

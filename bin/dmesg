@@ -1,0 +1,11 @@
+#!/usr/bin/env -S sudo fish
+
+set -l args $argv
+argparse -us err\& -- $argv; or return
+set -q _flag_err; and set -l level '--level=err,emerg,crit'
+
+set -l _cmd (command -sa (path basename (status filename)))
+$_cmd[2] --color=always --decode --ctime $level $args | less -R
+
+
+
