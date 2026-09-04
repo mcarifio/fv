@@ -1,3 +1,3 @@
-function zlib+category
-    path bn $argv[1] 2
+function (rcvrf (status filename)) -a pathname  --no-scope-shadowing
+    path bn $pathname 2
 end

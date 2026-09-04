@@ -14,11 +14,11 @@ function send
 
     set -q _flag_show; and set -s _flag_select argv_opts0 cmd subcmd argv >&2
     if [ $subcmd = receivers ]
-       _cmd=(rcvr send receivers) $_cmd $argv_opts0 $cmd
+       _cmd=(rcvr4 send receivers) $_cmd $argv_opts0 $cmd
     else if functions -q (rcvr $cmd $subcmd)
-        $_cmd=(rcvr $cmd $subcmd) $_cmd $argv_opts0 $argv[(math 1 + $_flag_select)..]
+        _cmd=(rcvr4 $cmd $subcmd) $_cmd $argv_opts0 $argv[(math 1 + $_flag_select)..]
     else if builtin -q $cmd
-        builtin $cmd $argv_opts0 $subcmd $argv[3..]
+        _cmd=$cmd builtin $_cmd $argv_opts0 $subcmd $argv[3..]
     else if command -q $cmd
         _cmd=(command -s $cmd) command $_cmd $argv_opts0 $subcmd $argv[3..]
     else

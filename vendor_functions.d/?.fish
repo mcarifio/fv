@@ -1,5 +1,8 @@
-
 function \? -a _true _colon _false
     # true|false ;? true : false
-    [ $status -eq 0 ]; and echo $_true; or echo $_false
+    if [ $status -eq 0 ]
+        echo $_true
+    else
+        [ $_colon = : ]; and echo $_false; or echo $_colon
+    end
 end

@@ -1,4 +1,4 @@
-function (rcvr --def path bn) --no-scope-shadowing
+function (rcvrf (status filename)) --no-scope-shadowing
     [ -n "$argv[1]" ]; and set -l pathname $argv[1]; or return $(ret "missing pathname")
     set -l left (value $argv[2] 1)
     set -l right (value $argv[3] $left)
