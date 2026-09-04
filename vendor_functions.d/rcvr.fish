@@ -1,4 +1,4 @@
-function rcvr --no-scope-shadowing
+function (fname (status filename)) --no-scope-shadowing
     argparse def\& -- $argv
     set -l f (string join + $argv[1..2]); echo $f
     set -q _flag_def; or return 0

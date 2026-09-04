@@ -1,4 +1,4 @@
-function send+receivers
+function (fname (status filename))
     argparse -us show\& trace\& -- $argv
     [ -n "$argv[1]" ]; and set -l re "^$argv[1]\+.*\$"; or set -l re '^[^+]+\+.*$';
 

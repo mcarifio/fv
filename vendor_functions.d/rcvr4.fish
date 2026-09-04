@@ -1,6 +1,7 @@
-function rcvr4 -a cmd msg
-    set -l cmd (value $cmd send)
-    set -l msg $argv[2..]
+function (fname (status filename) cmd:function!'functions -q $cmd' msg:string) -a cmd msg --no-scope-shadowing
+    set -l cmd (value $cmd msend)
+    set -l msg (value $msg receivers)
+    set -e argv[1..2]
 
     set -l fcmd $cmd+(string join + $msg)
     if functions -q $fcmd

@@ -1,5 +1,5 @@
-function (sendr (status filename))
-    send (status function) $argv
+function (fname (status filename))
+    msend (status function) $argv
 end
 
-function (sendr (status filename)):sig; sendr:sig (status function); end
+function (msendr (status filename)):sig; sendr:sig (status function); end
